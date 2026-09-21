@@ -81,15 +81,23 @@ export default function Hero() {
   return (
     <section className="relative pt-28 pb-20 md:pt-36 md:pb-28 overflow-hidden bg-[#0a1224] text-white">
       
-      {/* Infosys Panoramic Cinematic Mountain Peak Wallpaper Background */}
-      <div className="absolute inset-0 z-0 overflow-hidden">
+      {/* TSI Animated Floating Gradient Orbs & Tech Mesh Overlay */}
+      <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none">
         <img 
           src="/assets/infosys_mountain_hero.jpg" 
           alt="Infosys Style Mountain Horizon Hero"
           className="w-full h-full object-cover object-center animate-hero-pan-rotate filter brightness-90 contrast-110"
         />
+        
+        {/* TSI Glowing Floating Gradient Mesh Orbs */}
+        <div className="absolute -top-24 left-1/4 w-[500px] h-[500px] bg-gradient-to-br from-[#00a3e0]/30 via-[#007cc3]/20 to-transparent rounded-full blur-3xl animate-orb-1" />
+        <div className="absolute bottom-10 right-1/4 w-[600px] h-[600px] bg-gradient-to-tl from-[#0056b3]/30 via-[#38bdf8]/15 to-transparent rounded-full blur-3xl animate-orb-2" />
+        
+        {/* TSI High-Tech Grid Mesh */}
+        <div className="absolute inset-0 bg-grid-mesh opacity-25" />
+        
         {/* Dusky Twilight Atmosphere Gradient Overlay */}
-        <div className="absolute inset-0 bg-gradient-to-b from-[#091124]/70 via-[#071022]/40 to-[#050c1c]" />
+        <div className="absolute inset-0 bg-gradient-to-b from-[#091124]/75 via-[#071022]/45 to-[#050c1c]" />
       </div>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">

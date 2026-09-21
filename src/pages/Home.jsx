@@ -111,12 +111,20 @@ export default function Home() {
       {/* Hero Section - Infosys Corporate Dark Blue Theme */}
       <Hero />
 
-      {/* Pillars of Excellence Section - Infosys Dark Navy Theme */}
-      <section className="py-20 bg-[#050C1E] border-t border-slate-800/80 relative z-10">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      {/* Pillars of Excellence Section - TSI Tech Mesh & Dark Navy Theme */}
+      <section className="py-24 bg-[#050C1E] border-t border-slate-800/80 relative z-10 overflow-hidden">
+        
+        {/* TSI Animated Background Mesh Orbs */}
+        <div className="absolute inset-0 z-0 pointer-events-none overflow-hidden">
+          <div className="absolute top-1/2 -left-48 w-96 h-96 bg-gradient-to-tr from-[#007cc3]/20 via-[#00a3e0]/10 to-transparent rounded-full blur-3xl animate-orb-1" />
+          <div className="absolute bottom-0 -right-48 w-96 h-96 bg-gradient-to-bl from-[#0056b3]/25 via-[#38bdf8]/10 to-transparent rounded-full blur-3xl animate-orb-2" />
+          <div className="absolute inset-0 bg-grid-mesh opacity-20" />
+        </div>
+
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           
           <div className="text-center max-w-3xl mx-auto space-y-4 mb-16">
-            <div className="inline-flex items-center space-x-2 px-4 py-1.5 rounded-full bg-[#007cc3]/20 text-xs font-extrabold text-[#00a3e0] uppercase border border-[#007cc3]/40 backdrop-blur-md">
+            <div className="inline-flex items-center space-x-2 px-4 py-1.5 rounded-full bg-[#007cc3]/20 text-xs font-extrabold text-[#00a3e0] uppercase border border-[#007cc3]/40 backdrop-blur-md shadow-lg">
               <Target className="w-4 h-4 text-[#00a3e0]" />
               <span>Why Choose Suntech</span>
             </div>
@@ -134,10 +142,10 @@ export default function Home() {
               return (
                 <div 
                   key={idx}
-                  className="bg-[#0B172E]/90 p-6 sm:p-8 rounded-3xl border border-slate-800 shadow-md hover:shadow-2xl hover:border-[#007cc3] transition-all duration-300 group flex flex-col justify-between"
+                  className="bg-[#0B172E]/90 backdrop-blur-xl p-6 sm:p-8 rounded-3xl border border-white/10 shadow-xl hover:shadow-2xl hover:border-[#00a3e0] hover:bg-[#007cc3]/10 hover:-translate-y-2 transition-all duration-300 group flex flex-col justify-between"
                 >
                   <div>
-                    <div className="w-12 h-12 rounded-2xl bg-gradient-to-br from-[#007cc3] to-[#00a3e0] text-white font-bold flex items-center justify-center mb-6 shadow-md shadow-[#007cc3]/30 group-hover:scale-110 transition-transform">
+                    <div className="w-12 h-12 rounded-2xl bg-gradient-to-br from-[#007cc3] to-[#00a3e0] text-white font-bold flex items-center justify-center mb-6 shadow-lg shadow-[#007cc3]/40 group-hover:scale-110 transition-transform">
                       <IconComp className="w-6 h-6" />
                     </div>
                     <h3 className="text-xl font-extrabold text-white mb-2 group-hover:text-[#00a3e0] transition-colors">
@@ -147,7 +155,7 @@ export default function Home() {
                       {pillar.desc}
                     </p>
                   </div>
-                  <div className="pt-4 mt-4 border-t border-slate-800 flex items-center space-x-1.5 text-xs font-bold text-[#00a3e0]">
+                  <div className="pt-4 mt-4 border-t border-slate-800/80 flex items-center space-x-1.5 text-xs font-bold text-[#00a3e0]">
                     <CheckCircle2 className="w-4 h-4" />
                     <span>Verified Core Standard</span>
                   </div>
@@ -159,12 +167,19 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Standalone Page Navigation Portal Grid - Infosys Dark Portal Theme */}
-      <section className="py-24 relative z-10 bg-[#030712] border-t border-slate-800">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      {/* Standalone Page Navigation Portal Grid - TSI Dark Portal Theme */}
+      <section className="py-24 relative z-10 bg-[#030712] border-t border-slate-800 overflow-hidden">
+        
+        {/* TSI Floating Orb Background */}
+        <div className="absolute inset-0 z-0 pointer-events-none overflow-hidden">
+          <div className="absolute top-1/3 right-1/4 w-[600px] h-[600px] bg-gradient-to-br from-[#00a3e0]/15 via-[#007cc3]/10 to-transparent rounded-full blur-3xl animate-orb-1" />
+          <div className="absolute inset-0 bg-grid-mesh opacity-15" />
+        </div>
+
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           
           <div className="text-center max-w-3xl mx-auto space-y-4 mb-16">
-            <div className="inline-flex items-center space-x-2 px-4 py-1.5 rounded-full bg-[#007cc3]/20 text-xs font-extrabold text-[#00a3e0] uppercase border border-[#007cc3]/40 backdrop-blur-md">
+            <div className="inline-flex items-center space-x-2 px-4 py-1.5 rounded-full bg-[#007cc3]/20 text-xs font-extrabold text-[#00a3e0] uppercase border border-[#007cc3]/40 backdrop-blur-md shadow-lg">
               <Layers className="w-4 h-4 text-[#00a3e0]" />
               <span>Dedicated Navigation Hub</span>
             </div>
@@ -183,11 +198,11 @@ export default function Home() {
                 <Link 
                   key={idx} 
                   to={card.path}
-                  className="bg-[#0B172E]/80 p-6 sm:p-8 rounded-3xl border border-slate-800 hover:border-[#00a3e0] hover:bg-[#007cc3]/10 transition-all duration-300 flex flex-col justify-between group shadow-md hover:shadow-2xl hover:-translate-y-1.5"
+                  className="bg-[#0B172E]/80 backdrop-blur-xl p-6 sm:p-8 rounded-3xl border border-white/10 hover:border-[#00a3e0] hover:bg-[#007cc3]/15 transition-all duration-300 flex flex-col justify-between group shadow-xl hover:shadow-2xl hover:shadow-[#007cc3]/20 hover:-translate-y-2"
                 >
                   <div>
                     <div className="flex items-center justify-between mb-5">
-                      <div className={`p-3.5 rounded-2xl bg-gradient-to-br ${card.color} text-white font-bold shadow-md shadow-[#007cc3]/30`}>
+                      <div className={`p-3.5 rounded-2xl bg-gradient-to-br ${card.color} text-white font-bold shadow-lg shadow-[#007cc3]/30 group-hover:scale-105 transition-transform`}>
                         <Icon className="w-6 h-6" />
                       </div>
                       <span className="px-3 py-1 rounded-full text-[10px] font-black uppercase bg-[#007cc3]/30 text-[#00a3e0] border border-[#007cc3]/50">

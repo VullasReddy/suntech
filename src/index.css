@@ -1,0 +1,157 @@
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Outfit:wght@400;500;600;700;800;900&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --color-brand-dark: #ffffff;
+  --color-brand-navy: #0a192f;
+  --color-brand-card: #ffffff;
+  --color-brand-accent: #007cc3;
+  --color-brand-cyan: #00a3e0;
+  --color-brand-blue: #0056b3;
+  --font-sans: 'Outfit', 'Plus Jakarta Sans', sans-serif;
+}
+
+html {
+  scroll-behavior: smooth;
+  font-family: 'Outfit', sans-serif;
+}
+
+body {
+  background-color: #ffffff;
+  color: #0f172a;
+  overflow-x: hidden;
+}
+
+/* Light Mesh Grid Overlay - Infosys Tech Mesh */
+.bg-grid-mesh {
+  background-size: 36px 36px;
+  background-image: 
+    linear-gradient(to right, rgba(0, 124, 195, 0.04) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(0, 124, 195, 0.04) 1px, transparent 1px);
+}
+
+/* Infosys Clean Corporate Glassmorphism Panels */
+.glass-panel {
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(0, 124, 195, 0.15);
+  box-shadow: 0 10px 30px -5px rgba(0, 124, 195, 0.08);
+}
+
+.glass-panel-glow {
+  background: #ffffff;
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  border: 1px solid rgba(0, 124, 195, 0.35);
+  box-shadow: 0 15px 35px -10px rgba(0, 124, 195, 0.25);
+}
+
+.glass-card {
+  background: #ffffff;
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border: 1px solid #e2e8f0;
+  transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 4px 15px -2px rgba(0, 0, 0, 0.03);
+}
+
+.glass-card:hover {
+  background: #ffffff;
+  border-color: rgba(0, 124, 195, 0.6);
+  box-shadow: 0 20px 40px -15px rgba(0, 124, 195, 0.25);
+  transform: translateY(-4px);
+}
+
+/* Text Gradients for Infosys Corporate Blue Theme */
+.text-gradient-main {
+  background: linear-gradient(135deg, #0a192f 0%, #007cc3 50%, #00a3e0 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.text-gradient-cyan {
+  background: linear-gradient(135deg, #007cc3 0%, #00a3e0 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.text-gradient-purple {
+  background: linear-gradient(135deg, #007cc3 0%, #0056b3 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Glowing Border Badge */
+.glow-badge {
+  position: relative;
+  background: rgba(0, 124, 195, 0.08);
+  border: 1px solid rgba(0, 124, 195, 0.35);
+  box-shadow: 0 0 20px rgba(0, 124, 195, 0.18);
+}
+
+/* Smooth Animations */
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-8px); }
+}
+
+@keyframes pulse-glow {
+  0%, 100% { opacity: 0.5; transform: scale(1); }
+  50% { opacity: 0.85; transform: scale(1.04); }
+}
+
+@keyframes spin-slow {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* Slow Cinematic Rotating & Panning Video-like Animation */
+@keyframes hero-pan-rotate {
+  0% {
+    transform: scale(1.08) rotate(0deg) translate(0px, 0px);
+  }
+  25% {
+    transform: scale(1.18) rotate(1.5deg) translate(-20px, -15px);
+  }
+  50% {
+    transform: scale(1.22) rotate(-1deg) translate(15px, -25px);
+  }
+  75% {
+    transform: scale(1.15) rotate(1.2deg) translate(20px, 15px);
+  }
+  100% {
+    transform: scale(1.08) rotate(0deg) translate(0px, 0px);
+  }
+}
+
+.animate-hero-pan-rotate {
+  animation: hero-pan-rotate 22s ease-in-out infinite alternate;
+}
+
+.animate-float {
+  animation: float 4s ease-in-out infinite;
+}
+
+.animate-pulse-glow {
+  animation: pulse-glow 6s ease-in-out infinite;
+}
+
+.animate-spin-slow {
+  animation: spin-slow 12s linear infinite;
+}
+
+/* Custom Infosys Blue Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #f8fafc;
+}
+::-webkit-scrollbar-thumb {
+  background: #007cc3;
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #0056b3;
+}

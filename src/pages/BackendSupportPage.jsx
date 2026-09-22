@@ -14,6 +14,17 @@ import {
 } from 'lucide-react';
 
 export default function BackendSupportPage() {
+  const [isExpanded, setIsExpanded] = React.useState(false);
+
+  const toggleReadMore = (e) => {
+    e.preventDefault();
+    setIsExpanded(!isExpanded);
+    const element = document.getElementById('capabilities');
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+
   const capabilities = [
     {
       title: '24/7 Omnichannel Customer Desk',
@@ -44,7 +55,7 @@ export default function BackendSupportPage() {
   return (
     <div className="bg-slate-50 text-slate-900 min-h-screen">
       
-      {/* Infosys Exact Subpage Hero Banner (from User Screenshot) */}
+      {/* Infosys Subpage Hero Banner */}
       <section className="relative pt-32 pb-16 md:pt-40 md:pb-20 overflow-hidden bg-gradient-to-b from-[#18253c] via-[#e2ebf7] to-[#f8fafc]">
         
         {/* Abstract 3D Glass Light Rings Background Effect */}
@@ -64,7 +75,7 @@ export default function BackendSupportPage() {
             <span className="text-white">Backend Support</span>
           </div>
 
-          {/* Center Category Pill Badge (Exact "Event" Badge from Screenshot) */}
+          {/* Center Category Pill Badge */}
           <div className="flex justify-center mb-6">
             <div className="inline-flex items-center space-x-2 px-5 py-1.5 rounded-md bg-[#0c1529] text-white text-xs font-extrabold uppercase tracking-widest shadow-lg border border-white/10">
               <Headphones className="w-3.5 h-3.5 text-[#00a3e0]" />
@@ -72,7 +83,7 @@ export default function BackendSupportPage() {
             </div>
           </div>
 
-          {/* Main Title (Exact Large Thin Centered Title from Screenshot) */}
+          {/* Main Title */}
           <div className="text-center max-w-4xl mx-auto space-y-6">
             <h1 className="text-4xl sm:text-6xl lg:text-7xl font-light text-slate-900 tracking-tight leading-tight">
               Backend Support & Operations Desk
@@ -81,19 +92,19 @@ export default function BackendSupportPage() {
               Outsource routine operational workloads to our round-the-clock backend desk for seamless continuity, catalog processing, and rapid ticket resolution.
             </p>
 
-            {/* Read More / Explore Action Button (Exact "Read More ↗" Button from Screenshot) */}
+            {/* Read More / Explore Action Button */}
             <div className="pt-2 flex justify-center">
-              <a 
-                href="#capabilities"
-                className="inline-flex items-center space-x-2 px-8 py-3.5 rounded-xl bg-[#121927] hover:bg-[#007cc3] text-white font-bold text-sm shadow-2xl transition-all hover:scale-105 group"
+              <button 
+                onClick={toggleReadMore}
+                className="inline-flex items-center space-x-2 px-8 py-3.5 rounded-xl bg-[#121927] hover:bg-[#007cc3] text-white font-bold text-sm shadow-2xl transition-all hover:scale-105 group cursor-pointer"
               >
-                <span>Read More</span>
-                <ArrowUpRight className="w-4 h-4 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
-              </a>
+                <span>{isExpanded ? 'Hide Detailed Overview' : 'Read More'}</span>
+                <ArrowUpRight className={`w-4 h-4 transition-transform duration-300 ${isExpanded ? 'rotate-180' : 'group-hover:translate-x-0.5 group-hover:-translate-y-0.5'}`} />
+              </button>
             </div>
           </div>
 
-          {/* Bottom Segmented Carousel Indicator Bars (Exact 3 Bars from Screenshot) */}
+          {/* Bottom Segmented Carousel Indicator Bars */}
           <div className="mt-16 flex items-center justify-center space-x-4 max-w-md mx-auto">
             <div className="w-36 h-2 rounded-full bg-slate-300/80" />
             <div className="w-36 h-2 rounded-full bg-slate-300/80" />
@@ -102,6 +113,74 @@ export default function BackendSupportPage() {
 
         </div>
       </section>
+
+      {/* Expanded Detailed Overview Section when Read More is Clicked */}
+      {isExpanded && (
+        <section className="py-12 bg-white border-b border-slate-200 animate-in fade-in slide-in-from-top-4 duration-500">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="bg-gradient-to-br from-slate-900 via-[#0b1730] to-slate-950 rounded-3xl p-8 sm:p-12 text-white shadow-2xl space-y-8 border border-cyan-500/30">
+              
+              <div className="flex flex-col md:flex-row md:items-center justify-between gap-6 border-b border-slate-800 pb-6">
+                <div>
+                  <span className="text-xs font-black uppercase text-cyan-400 tracking-widest block mb-1">
+                    24/7 Global Delivery & Ticket SLAs
+                  </span>
+                  <h3 className="text-2xl sm:text-3xl font-extrabold text-white">
+                    Operations Desk Infrastructure & Ticket Resolution Engine
+                  </h3>
+                </div>
+                <div className="px-4 py-2 rounded-xl bg-cyan-500/10 border border-cyan-400/30 text-xs font-extrabold text-cyan-300 shrink-0">
+                  SLA Guaranteed: &lt; 2-Hour Response
+                </div>
+              </div>
+
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <div className="bg-slate-900/90 p-6 rounded-2xl border border-slate-800 space-y-3">
+                  <div className="w-10 h-10 rounded-xl bg-[#007cc3]/20 text-cyan-400 flex items-center justify-center font-bold">
+                    1
+                  </div>
+                  <h4 className="font-extrabold text-base text-white">Omnichannel Helpdesk Coverage</h4>
+                  <p className="text-xs text-slate-300 leading-relaxed">
+                    24/7/365 multi-tier agent coverage across live chat, inbound/outbound voice calls, email ticketing, and social media inquiries.
+                  </p>
+                </div>
+
+                <div className="bg-slate-900/90 p-6 rounded-2xl border border-slate-800 space-y-3">
+                  <div className="w-10 h-10 rounded-xl bg-[#007cc3]/20 text-cyan-400 flex items-center justify-center font-bold">
+                    2
+                  </div>
+                  <h4 className="font-extrabold text-base text-white">Catalog Processing & Cleansing</h4>
+                  <p className="text-xs text-slate-300 leading-relaxed">
+                    Bulk SKU data entry, price file validation, catalog attribute tagging, data cleansing, and error-free record management.
+                  </p>
+                </div>
+
+                <div className="bg-slate-900/90 p-6 rounded-2xl border border-slate-800 space-y-3">
+                  <div className="w-10 h-10 rounded-xl bg-[#007cc3]/20 text-cyan-400 flex items-center justify-center font-bold">
+                    3
+                  </div>
+                  <h4 className="font-extrabold text-base text-white">Executive Virtual Assistance</h4>
+                  <p className="text-xs text-slate-300 leading-relaxed">
+                    Dedicated back-office administrative assistants for calendar scheduling, vendor communication, report drafting, and research.
+                  </p>
+                </div>
+              </div>
+
+              <div className="pt-4 flex flex-wrap items-center justify-between gap-4 border-t border-slate-800 text-xs text-slate-300 font-medium">
+                <div className="flex items-center space-x-2">
+                  <CheckCircle2 className="w-4 h-4 text-emerald-400" />
+                  <span>Compatible Ticketing Systems (Zendesk, Freshdesk, Salesforce Service Cloud, Jira)</span>
+                </div>
+                <div className="flex items-center space-x-2">
+                  <CheckCircle2 className="w-4 h-4 text-cyan-400" />
+                  <span>Real-Time Quality Auditing & CSAT Performance Dashboards</span>
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </section>
+      )}
 
       <div id="capabilities" className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
 

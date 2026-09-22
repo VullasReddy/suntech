@@ -1,279 +1,235 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { 
-  TrendingUp, 
-  Landmark, 
-  ShoppingBag, 
-  Headphones, 
   ArrowRight, 
-  Sparkles, 
-  Zap, 
-  CheckCircle2,
-  ChevronRight,
-  Sun,
-  ShieldCheck,
-  Star,
-  Mic,
-  Send,
-  Search,
-  Shield
+  Zap,
+  Bot
 } from 'lucide-react';
 
 export default function Hero() {
-  const [activeNode, setActiveNode] = useState('digital-marketing');
-  const [promptText, setPromptText] = useState('');
+  const [scrollY, setScrollY] = useState(0);
 
-  const treeNodes = [
-    {
-      id: 'digital-marketing',
-      title: 'Digital Marketing & Growth',
-      subtitle: 'SEO & Multi-Channel Acquisition',
-      desc: 'Data-driven SEO audits, high-ROAS PPC ad funnels, social media acquisition, and brand scaling.',
-      metrics: '+240% Reach',
-      icon: TrendingUp,
-      path: '/digital-marketing',
-      color: 'from-[#007cc3] via-[#00a3e0] to-[#0056b3]',
-      tag: 'SEO & Ads'
-    },
-    {
-      title: 'Financial Advisory & Billing',
-      id: 'finance-services',
-      subtitle: 'Ledger Audit & Tax Advisory',
-      desc: 'Complete ledger bookkeeping, automated invoice billing, risk analysis, and tax compliance.',
-      metrics: '100% Tax Audit',
-      icon: Landmark,
-      path: '/finance-sector',
-      color: 'from-[#0056b3] via-[#007cc3] to-[#00a3e0]',
-      tag: 'Finance Desk'
-    },
-    {
-      id: 'online-marketplace',
-      title: 'Online Marketplace Scale',
-      subtitle: 'Amazon & Shopify Integration',
-      desc: 'Storefront onboarding, catalog listing SEO, Amazon FBA sync, and real-time inventory management.',
-      metrics: 'Multi-Channel Sync',
-      icon: ShoppingBag,
-      path: '/online-marketplace',
-      color: 'from-[#00a3e0] via-[#007cc3] to-[#0056b3]',
-      tag: 'E-Commerce'
-    },
-    {
-      id: 'backend-support',
-      title: 'Backend Operations Desk',
-      subtitle: '24/7 SLA Customer Desk',
-      desc: 'Round-the-clock customer support agents, data entry processing, catalog QA, and admin assistance.',
-      metrics: '< 2 hr Response SLA',
-      icon: Headphones,
-      path: '/backend-support',
-      color: 'from-[#007cc3] via-[#0056b3] to-[#00a3e0]',
-      tag: '24/7 Coverage'
-    }
-  ];
+  useEffect(() => {
+    let ticking = false;
+    const handleScroll = () => {
+      if (!ticking) {
+        window.requestAnimationFrame(() => {
+          setScrollY(window.scrollY);
+          ticking = false;
+        });
+        ticking = true;
+      }
+    };
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
 
-  const quickPrompts = [
-    { label: 'Navigate Enterprise AI with Suntech', path: '/services' },
-    { label: 'Discover the power of Suntech Solutions', path: '/leadership' },
-    { label: 'Insights from Suntech Operations Index', path: '/support' }
-  ];
-
-  const currentNode = treeNodes.find(n => n.id === activeNode) || treeNodes[0];
+  // Subtle parallax movement for cityscape backdrop
+  const bgTranslateY = Math.min(scrollY * 0.15, 80);
 
   return (
-    <section className="relative pt-28 pb-20 md:pt-36 md:pb-28 overflow-hidden bg-[#0a1224] text-white">
+    <section className="relative pt-28 pb-24 md:pt-36 md:pb-36 overflow-hidden bg-[#030712] text-white min-h-[92vh] flex items-center">
       
-      {/* TSI Animated Floating Gradient Orbs & Tech Mesh Overlay */}
+      {/* Cityscape Background UI with Parallax Motion */}
       <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none">
         <img 
-          src="/assets/infosys_mountain_hero.jpg" 
-          alt="Infosys Style Mountain Horizon Hero"
-          className="w-full h-full object-cover object-center animate-hero-pan-rotate filter brightness-90 contrast-110"
+          src="/assets/tsi_cityscape_banner.jpg" 
+          alt="Suntech Cityscape Network Backdrop"
+          className="w-full h-full object-cover object-center filter brightness-[0.70] contrast-125 scale-105 animate-hero-pan-rotate transition-transform duration-75 ease-out"
+          style={{
+            transform: `translate3d(0, ${bgTranslateY}px, 0)`,
+            willChange: 'transform'
+          }}
         />
         
-        {/* TSI Glowing Floating Gradient Mesh Orbs */}
-        <div className="absolute -top-24 left-1/4 w-[500px] h-[500px] bg-gradient-to-br from-[#00a3e0]/30 via-[#007cc3]/20 to-transparent rounded-full blur-3xl animate-orb-1" />
-        <div className="absolute bottom-10 right-1/4 w-[600px] h-[600px] bg-gradient-to-tl from-[#0056b3]/30 via-[#38bdf8]/15 to-transparent rounded-full blur-3xl animate-orb-2" />
-        
-        {/* TSI High-Tech Grid Mesh */}
-        <div className="absolute inset-0 bg-grid-mesh opacity-25" />
-        
-        {/* Dusky Twilight Atmosphere Gradient Overlay */}
-        <div className="absolute inset-0 bg-gradient-to-b from-[#091124]/75 via-[#071022]/45 to-[#050c1c]" />
+        {/* TSI Background Light Ring Loops */}
+        <div className="absolute top-1/2 right-[10%] -translate-y-1/2 w-[620px] h-[620px] border border-cyan-400/20 rounded-full animate-spin-slow" />
+        <div className="absolute top-1/3 right-[5%] w-[480px] h-[480px] border border-purple-500/20 rounded-full animate-pulse-glow" />
+        <div className="absolute top-1/4 right-[18%] w-[380px] h-[380px] border border-blue-400/15 rounded-full rotate-45" />
+
+        {/* Floating Gradient Mesh Orbs */}
+        <div className="absolute -top-24 left-1/4 w-[500px] h-[500px] bg-gradient-to-br from-[#00a3e0]/20 via-[#007cc3]/10 to-transparent rounded-full blur-3xl animate-orb-1" />
+        <div className="absolute bottom-10 right-1/4 w-[600px] h-[600px] bg-gradient-to-tl from-[#8b5cf6]/20 via-[#00a3e0]/10 to-transparent rounded-full blur-3xl animate-orb-2" />
+
+        {/* Tech Grid Mesh Overlay & Vignette Shading */}
+        <div className="absolute inset-0 bg-grid-mesh opacity-20" />
+        <div className="absolute inset-0 bg-gradient-to-b from-[#030712]/75 via-[#060e26]/50 to-[#030712]" />
+        <div className="absolute inset-0 bg-gradient-to-r from-[#030712]/85 via-transparent to-[#030712]/60" />
       </div>
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 w-full">
         
-        {/* Main Header Fold - Infosys Exact "Navigate your next" Centered Headline */}
-        <div className="text-center max-w-5xl mx-auto pt-8 pb-16 space-y-6">
-          
-          <h1 className="text-5xl sm:text-7xl lg:text-8xl font-normal tracking-tight text-white leading-[1.08] font-sans drop-shadow-2xl">
-            Branching Out to Grow Your <span className="font-semibold text-white drop-shadow-lg">Business</span>
-          </h1>
-
-          <p className="text-slate-200 text-base sm:text-xl max-w-3xl mx-auto leading-relaxed font-normal drop-shadow-md">
-            Suntech Solutions Organization equips enterprises worldwide with strategic digital marketing, rigorous financial advisory, scalable marketplace operations, and 24/7 dedicated backend support.
-          </p>
-
-          {/* Action CTAs */}
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-4 pt-4">
-            <Link
-              to="/services"
-              className="w-full sm:w-auto inline-flex items-center justify-center space-x-3 px-9 py-4 rounded-full bg-gradient-to-r from-[#007cc3] via-[#00a3e0] to-[#0056b3] hover:from-[#00a3e0] hover:to-[#007cc3] text-white font-black text-sm shadow-xl shadow-[#007cc3]/50 hover:shadow-[#00a3e0]/70 transition-all hover:-translate-y-1 group"
-            >
-              <span>Explore All Solutions</span>
-              <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-            </Link>
-            <Link
-              to="/support"
-              className="w-full sm:w-auto inline-flex items-center justify-center space-x-2 px-8 py-4 rounded-full bg-white/10 hover:bg-white/20 text-white font-extrabold text-sm border border-white/20 backdrop-blur-md shadow-md transition-all"
-            >
-              <Headphones className="w-4 h-4 text-[#00a3e0]" />
-              <span>Contact Support Desk</span>
-            </Link>
-          </div>
-
-          {/* Trust Highlights */}
-          <div className="pt-6 flex items-center justify-center space-x-6 text-xs font-bold text-slate-300">
-            <div className="flex items-center space-x-1.5">
-              <ShieldCheck className="w-4 h-4 text-[#00a3e0]" />
-              <span>Enterprise SLA Compliance</span>
-            </div>
-            <div className="flex items-center space-x-1.5">
-              <Star className="w-4 h-4 text-[#00a3e0] fill-[#00a3e0]" />
-              <span>24/7 Global Desk</span>
-            </div>
-          </div>
-
+        {/* Subtitle Badge */}
+        <div className="mb-4 inline-flex items-center space-x-2 px-4 py-1 rounded-full bg-cyan-500/10 border border-cyan-400/30 backdrop-blur-md">
+          <span className="w-2 h-2 rounded-full bg-cyan-400 animate-ping" />
+          <span className="text-xs font-black uppercase text-cyan-300 tracking-widest">
+            Multi-Award Winning Technology & Operations
+          </span>
         </div>
 
-        {/* Interactive Ecosystem Hub Section */}
-        <div className="mt-12 max-w-5xl mx-auto">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
           
-          <div className="text-center mb-6">
-            <span className="text-xs font-extrabold tracking-widest text-[#007cc3] uppercase px-5 py-2 rounded-full bg-white/40 border border-white/60 shadow-lg backdrop-blur-xl">
-              Interactive Operational Ecosystem (Select a node below)
-            </span>
-          </div>
-
-          <div className="bg-white/40 backdrop-blur-2xl rounded-3xl p-6 sm:p-10 border border-white/60 shadow-[0_25px_60px_-15px_rgba(0,0,0,0.3)] relative overflow-hidden text-slate-900">
+          {/* Left Column: Headline, Category Pills & Glassmorphism Card */}
+          <div className="lg:col-span-7 space-y-6 text-left">
             
-            {/* Ambient Glass Reflective Light Sheen Overlay */}
-            <div className="absolute -top-32 -left-32 w-96 h-96 bg-gradient-to-br from-white/70 via-sky-200/30 to-transparent rounded-full blur-3xl pointer-events-none" />
-            <div className="absolute inset-0 bg-gradient-to-br from-white/30 via-transparent to-white/10 pointer-events-none" />
+            {/* Giant Bold Headline */}
+            <h1 className="text-3xl sm:text-5xl lg:text-6xl font-extrabold text-white tracking-tight leading-[1.1] font-sans drop-shadow-2xl">
+              Suntech enables growth in the Enterprise Channel through innovation.
+            </h1>
 
-            {/* SVG Connector Lines */}
-            <svg 
-              className="absolute inset-0 w-full h-full pointer-events-none hidden md:block" 
-              viewBox="0 0 800 450"
-              fill="none"
-            >
-              <path d="M 400 225 L 200 120" stroke="#007cc3" strokeWidth="2.5" strokeDasharray="6 6" opacity="0.6" />
-              <path d="M 400 225 L 600 120" stroke="#00a3e0" strokeWidth="2.5" strokeDasharray="6 6" opacity="0.6" />
-              <path d="M 400 225 L 200 330" stroke="#007cc3" strokeWidth="2.5" strokeDasharray="6 6" opacity="0.6" />
-              <path d="M 400 225 L 600 330" stroke="#00a3e0" strokeWidth="2.5" strokeDasharray="6 6" opacity="0.6" />
-            </svg>
-
-            {/* Central Core Hub Logo Badge (Translucent Glass Reflection Logo Box) */}
-            <div className="relative z-20 flex flex-col items-center justify-center my-6">
-              <div className="relative w-32 h-32 sm:w-36 sm:h-36 rounded-full bg-gradient-to-br from-[#007cc3] via-[#00a3e0] to-[#0056b3] p-1 flex items-center justify-center shadow-2xl shadow-[#007cc3]/40 group animate-pulse-glow">
-                <div className="w-full h-full rounded-full bg-white/90 backdrop-blur-md flex flex-col items-center justify-center text-center p-3 border border-white/80 shadow-lg">
-                  <div className="w-10 h-10 rounded-xl bg-[#007cc3]/15 text-[#007cc3] flex items-center justify-center mb-1 border border-[#007cc3]/30 shadow-inner">
-                    <Zap className="w-6 h-6 animate-bounce text-[#007cc3]" />
-                  </div>
-                  <span className="block font-black text-xs text-slate-900 tracking-widest uppercase">SUNTECH</span>
-                  <span className="block text-[9px] text-[#007cc3] font-extrabold tracking-widest">SOLUTIONS</span>
-                </div>
-              </div>
-            </div>
-
-            {/* Interactive Tree Nodes Grid */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-5 relative z-20">
-              {treeNodes.map((node) => {
-                const IconComponent = node.icon;
-                const isSelected = activeNode === node.id;
-
-                return (
-                  <div
-                    key={node.id}
-                    onClick={() => setActiveNode(node.id)}
-                    className={`cursor-pointer rounded-2xl p-6 transition-all duration-300 relative border ${
-                      isSelected
-                        ? 'bg-white/95 backdrop-blur-xl border-[#007cc3] shadow-2xl shadow-[#007cc3]/30 scale-[1.02] ring-2 ring-[#007cc3]/50'
-                        : 'bg-white/65 backdrop-blur-md hover:bg-white/85 border-white/70 hover:border-[#007cc3] hover:-translate-y-1 shadow-lg'
-                    }`}
-                  >
-                    <div className="flex items-start space-x-4">
-                      <div className={`p-3.5 rounded-2xl bg-gradient-to-br ${node.color} text-white font-bold shadow-md shrink-0`}>
-                        <IconComponent className="w-6 h-6" />
-                      </div>
-                      <div className="flex-1 min-w-0">
-                        <div className="flex items-center justify-between">
-                          <h3 className="font-extrabold text-base text-slate-900 truncate">{node.title}</h3>
-                          <span className="text-[10px] font-black px-2.5 py-0.5 rounded-full bg-[#007cc3]/15 text-[#007cc3] border border-[#007cc3]/30">
-                            {node.metrics}
-                          </span>
-                        </div>
-                        <p className="text-xs text-slate-700 mt-1 leading-relaxed font-medium">
-                          {node.subtitle}
-                        </p>
-                        <Link 
-                          to={node.path}
-                          className="mt-3 inline-flex items-center space-x-1 text-xs font-extrabold text-[#007cc3] hover:text-[#0056b3]"
-                        >
-                          <span>Explore Dedicated Page</span>
-                          <ChevronRight className="w-4 h-4" />
-                        </Link>
-                      </div>
-                    </div>
-                  </div>
-                );
-              })}
-            </div>
-
-            {/* Selected Node Live Preview Banner */}
-            <div className="mt-8 p-5 rounded-2xl bg-gradient-to-r from-[#007cc3] via-[#00a3e0] to-[#0056b3] text-white shadow-2xl flex flex-col sm:flex-row items-center justify-between gap-4 relative z-20 border border-white/20">
-              <div className="flex items-center space-x-3 text-center sm:text-left">
-                <div className="w-10 h-10 rounded-xl bg-white/20 text-white flex items-center justify-center shrink-0 backdrop-blur-md border border-white/30">
-                  <CheckCircle2 className="w-5 h-5" />
-                </div>
-                <div>
-                  <h4 className="text-sm font-extrabold text-white">Active Focus: {currentNode.title}</h4>
-                  <p className="text-xs text-sky-100 font-medium">{currentNode.desc}</p>
-                </div>
-              </div>
+            {/* 3 TSI-Style Category Pill Buttons */}
+            <div className="flex flex-col sm:flex-row flex-wrap items-start gap-3 pt-1">
               <Link
-                to={currentNode.path}
-                className="px-6 py-2.5 rounded-full bg-slate-950 hover:bg-slate-900 text-white font-extrabold text-xs shrink-0 shadow-xl transition-colors flex items-center space-x-1 border border-white/20"
+                to="/digital-marketing"
+                className="w-full sm:w-auto px-6 py-3 rounded-xl bg-[#22b8cf] hover:bg-[#15aabf] text-white font-black text-xs uppercase tracking-wider shadow-lg shadow-[#22b8cf]/30 hover:scale-105 transition-all text-center"
               >
-                <span>Open Dedicated Page</span>
-                <ArrowRight className="w-4 h-4" />
+                UNIFIED MARKETING & GROWTH
+              </Link>
+              
+              <Link
+                to="/finance-sector"
+                className="w-full sm:w-auto px-6 py-3 rounded-xl bg-[#9d4edd] hover:bg-[#8338ec] text-white font-black text-xs uppercase tracking-wider shadow-lg shadow-[#9d4edd]/30 hover:scale-105 transition-all text-center"
+              >
+                FINANCIAL ADVISORY
+              </Link>
+
+              <Link
+                to="/online-marketplace"
+                className="w-full sm:w-auto px-6 py-3 rounded-xl bg-[#4880b8] hover:bg-[#366899] text-white font-black text-xs uppercase tracking-wider shadow-lg shadow-[#4880b8]/30 hover:scale-105 transition-all text-center"
+              >
+                MARKETPLACE INFRASTRUCTURE
               </Link>
             </div>
 
+            {/* Left Glassmorphism Overlay Card ("Cross Connect" Card) */}
+            <div className="bg-slate-950/80 backdrop-blur-xl p-6 sm:p-8 rounded-3xl border border-white/20 shadow-2xl space-y-3 mt-4">
+              <div className="flex items-center space-x-3">
+                <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-[#00a3e0] via-[#007cc3] to-[#8b5cf6] p-0.5 shadow-lg shadow-cyan-500/30">
+                  <div className="w-full h-full rounded-[10px] bg-slate-950 flex items-center justify-center">
+                    <Zap className="w-5 h-5 text-cyan-400 animate-pulse" />
+                  </div>
+                </div>
+                <div>
+                  <span className="font-extrabold text-lg text-white tracking-tight block">Cross Connect</span>
+                  <span className="text-[10px] font-black uppercase text-cyan-400 tracking-widest">Enterprise Unified SLA</span>
+                </div>
+              </div>
+
+              <h3 className="text-xl sm:text-3xl font-extrabold text-white tracking-tight leading-tight">
+                Introducing the future of Enterprise Operations
+              </h3>
+
+              <p className="text-xs sm:text-sm text-slate-300 leading-relaxed font-normal">
+                Unifying marketing acquisition, financial risk advisory, multi-channel marketplace integration, and 24/7 backend support under a single SLA framework.
+              </p>
+
+              <div className="pt-1">
+                <Link
+                  to="/services"
+                  className="inline-flex items-center space-x-2 text-xs font-extrabold text-cyan-400 hover:text-white transition-colors"
+                >
+                  <span>Discover Cross Connect Solutions</span>
+                  <ArrowRight className="w-4 h-4" />
+                </Link>
+              </div>
+            </div>
+
           </div>
 
-          {/* Quick Metrics Bar */}
-          <div className="mt-10 grid grid-cols-2 md:grid-cols-4 gap-4">
-            <div className="bg-white/45 backdrop-blur-xl p-6 rounded-2xl text-center border border-white/60 shadow-xl hover:bg-white/65 hover:border-[#007cc3] transition-all">
-              <div className="text-3xl font-black text-[#007cc3]">99.99%</div>
-              <div className="text-xs text-slate-800 mt-1 font-extrabold">Uptime SLA Guarantee</div>
-            </div>
-            <div className="bg-white/45 backdrop-blur-xl p-6 rounded-2xl text-center border border-white/60 shadow-xl hover:bg-white/65 hover:border-[#007cc3] transition-all">
-              <div className="text-3xl font-black text-slate-900">&lt; 2 Hrs</div>
-              <div className="text-xs text-slate-800 mt-1 font-extrabold">Support Initial SLA</div>
-            </div>
-            <div className="bg-white/45 backdrop-blur-xl p-6 rounded-2xl text-center border border-white/60 shadow-xl hover:bg-white/65 hover:border-[#007cc3] transition-all">
-              <div className="text-3xl font-black text-[#007cc3]">500+</div>
-              <div className="text-xs text-slate-800 mt-1 font-extrabold">Global Enterprise Clients</div>
-            </div>
-            <div className="bg-white/45 backdrop-blur-xl p-6 rounded-2xl text-center border border-white/60 shadow-xl hover:bg-white/65 hover:border-[#007cc3] transition-all">
-              <div className="text-3xl font-black text-slate-900">24/7</div>
-              <div className="text-xs text-slate-800 mt-1 font-extrabold">Operations Desk Active</div>
-            </div>
+          {/* Right Column: 3 Floating Animated Circular Photo Orbs */}
+          <div className="lg:col-span-5 relative h-[380px] sm:h-[440px] flex items-center justify-center">
+            
+            {/* Orb 1 (Top Left) - Digital Marketing */}
+            <Link
+              to="/digital-marketing"
+              className="absolute top-0 left-4 sm:left-10 w-36 h-36 sm:w-44 sm:h-44 rounded-full overflow-hidden border-2 border-cyan-400/60 shadow-2xl shadow-cyan-500/40 group hover:scale-110 transition-transform duration-500 animate-float z-20"
+            >
+              <img 
+                src="/assets/digital_marketing_main.jpg" 
+                alt="Digital Marketing Vertical"
+                className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-slate-950/85 via-slate-950/40 to-transparent flex items-center justify-center p-3 text-center">
+                <span className="font-extrabold text-xs text-white drop-shadow-md">
+                  Digital Marketing
+                </span>
+              </div>
+            </Link>
+
+            {/* Orb 2 (Middle Right) - Financial Advisory */}
+            <Link
+              to="/finance-sector"
+              className="absolute top-12 right-0 sm:right-2 w-40 h-40 sm:w-48 sm:h-48 rounded-full overflow-hidden border-2 border-purple-400/60 shadow-2xl shadow-purple-500/40 group hover:scale-110 transition-transform duration-500 animate-float z-30"
+              style={{ animationDelay: '1.5s' }}
+            >
+              <img 
+                src="/assets/finance_sector_main.jpg" 
+                alt="Financial Advisory Vertical"
+                className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-slate-950/85 via-slate-950/40 to-transparent flex items-center justify-center p-3 text-center">
+                <span className="font-extrabold text-xs text-white drop-shadow-md">
+                  Financial Advisory
+                </span>
+              </div>
+            </Link>
+
+            {/* Orb 3 (Bottom Center Large) - 24/7 Operations Desk */}
+            <Link
+              to="/backend-support"
+              className="absolute bottom-0 left-10 sm:left-16 w-48 h-48 sm:w-60 sm:h-60 rounded-full overflow-hidden border-2 border-sky-400/70 shadow-2xl shadow-sky-500/50 group hover:scale-110 transition-transform duration-500 animate-pulse-glow z-10"
+            >
+              <img 
+                src="/assets/backend_support_main.jpg" 
+                alt="24/7 Operations Desk Vertical"
+                className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-slate-950/90 via-slate-950/45 to-transparent flex flex-col items-center justify-center p-4 text-center">
+                <span className="font-black text-sm text-white drop-shadow-md">
+                  24/7 Operations Desk
+                </span>
+                <span className="text-[10px] text-cyan-300 font-bold mt-1">
+                  Sub-2hr SLA Support
+                </span>
+              </div>
+            </Link>
+
           </div>
 
         </div>
 
+        {/* Bottom Right Floating Action Button ("Ask Suntech AI") */}
+        <div className="pt-8 flex justify-end">
+          <Link
+            to="/support"
+            className="inline-flex items-center space-x-2 px-7 py-3 rounded-full bg-[#0284c7] hover:bg-[#0369a1] text-white font-extrabold text-xs shadow-2xl shadow-sky-600/50 hover:scale-105 transition-all border border-cyan-400/30 backdrop-blur-md"
+          >
+            <Bot className="w-4 h-4 text-cyan-200" />
+            <span>Ask Suntech AI</span>
+          </Link>
+        </div>
+
       </div>
+
+      {/* ONE Large Continuous Shallow White Arc Overlapping Hero Section */}
+      <div className="absolute bottom-0 left-0 right-0 w-full overflow-hidden leading-none pointer-events-none z-20">
+        <svg 
+          viewBox="0 0 1440 120" 
+          fill="none" 
+          xmlns="http://www.w3.org/2000/svg"
+          className="relative block w-full h-12 sm:h-20 md:h-28 lg:h-32 text-white"
+          preserveAspectRatio="none"
+        >
+          <path 
+            d="M 0,95 C 480,18 960,18 1440,95 L 1440,120 L 0,120 Z" 
+            fill="#ffffff"
+          />
+        </svg>
+      </div>
+
     </section>
   );
 }
+
+
+

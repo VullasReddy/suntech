@@ -21,6 +21,7 @@ import {
 } from 'lucide-react';
 
 import Awards from '../components/Awards';
+import Leadership from '../components/Leadership';
 
 export default function Home() {
   const pageNavCards = [
@@ -108,30 +109,31 @@ export default function Home() {
   return (
     <div className="bg-[#030712] text-white selection:bg-[#007cc3] selection:text-white">
       
-      {/* Hero Section - Infosys Corporate Dark Blue Theme */}
+      {/* Hero Section - TSI Panoramic Cityscape UI Theme */}
       <Hero />
 
-      {/* Pillars of Excellence Section - TSI Tech Mesh & Dark Navy Theme */}
-      <section className="py-24 bg-[#050C1E] border-t border-slate-800/80 relative z-10 overflow-hidden">
+
+      {/* Pillars of Excellence Section - White Background Theme with Animated Brand Cards */}
+      <section className="py-24 bg-white text-slate-900 border-t border-slate-200 relative z-10 overflow-hidden">
         
-        {/* TSI Animated Background Mesh Orbs */}
+        {/* Animated Background Mesh & Soft Blur Orbs */}
         <div className="absolute inset-0 z-0 pointer-events-none overflow-hidden">
-          <div className="absolute top-1/2 -left-48 w-96 h-96 bg-gradient-to-tr from-[#007cc3]/20 via-[#00a3e0]/10 to-transparent rounded-full blur-3xl animate-orb-1" />
-          <div className="absolute bottom-0 -right-48 w-96 h-96 bg-gradient-to-bl from-[#0056b3]/25 via-[#38bdf8]/10 to-transparent rounded-full blur-3xl animate-orb-2" />
-          <div className="absolute inset-0 bg-grid-mesh opacity-20" />
+          <div className="absolute top-1/2 -left-48 w-96 h-96 bg-cyan-400/10 rounded-full blur-3xl animate-orb-1" />
+          <div className="absolute bottom-0 -right-48 w-96 h-96 bg-blue-500/10 rounded-full blur-3xl animate-orb-2" />
+          <div className="absolute inset-0 bg-grid-mesh opacity-5" />
         </div>
 
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           
           <div className="text-center max-w-3xl mx-auto space-y-4 mb-16">
-            <div className="inline-flex items-center space-x-2 px-4 py-1.5 rounded-full bg-[#007cc3]/20 text-xs font-extrabold text-[#00a3e0] uppercase border border-[#007cc3]/40 backdrop-blur-md shadow-lg">
-              <Target className="w-4 h-4 text-[#00a3e0]" />
+            <div className="inline-flex items-center space-x-2 px-4 py-1.5 rounded-full bg-[#007cc3]/10 text-xs font-extrabold text-[#007cc3] uppercase border border-[#007cc3]/30 backdrop-blur-md shadow-sm">
+              <Target className="w-4 h-4 text-[#007cc3] animate-spin-slow" />
               <span>Why Choose Suntech</span>
             </div>
-            <h2 className="text-3xl sm:text-5xl font-extrabold text-white tracking-tight">
-              Driven by <span className="bg-gradient-to-r from-[#00a3e0] via-[#38bdf8] to-[#007cc3] bg-clip-text text-transparent">Precision & Scale</span>
+            <h2 className="text-3xl sm:text-5xl font-extrabold text-slate-900 tracking-tight">
+              Driven by <span className="bg-gradient-to-r from-[#007cc3] via-[#00a3e0] to-[#0056b3] bg-clip-text text-transparent">Precision & Scale</span>
             </h2>
-            <p className="text-slate-300 text-base leading-relaxed font-normal">
+            <p className="text-slate-600 text-base sm:text-lg leading-relaxed font-normal">
               We combine enterprise operational standards with agile execution to accelerate client growth worldwide.
             </p>
           </div>
@@ -142,21 +144,24 @@ export default function Home() {
               return (
                 <div 
                   key={idx}
-                  className="bg-[#0B172E]/90 backdrop-blur-xl p-6 sm:p-8 rounded-3xl border border-white/10 shadow-xl hover:shadow-2xl hover:border-[#00a3e0] hover:bg-[#007cc3]/10 hover:-translate-y-2 transition-all duration-300 group flex flex-col justify-between"
+                  className="bg-[#091538] text-white p-7 rounded-3xl border border-slate-800 shadow-xl hover:shadow-2xl hover:shadow-cyan-500/25 hover:border-cyan-400 hover:bg-[#0c1e4e] hover:-translate-y-3 transition-all duration-500 group flex flex-col justify-between relative overflow-hidden"
                 >
+                  {/* Animated Light Sweep Shimmer Effect on Hover */}
+                  <div className="absolute inset-0 bg-gradient-to-r from-transparent via-cyan-400/15 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000 pointer-events-none" />
+
                   <div>
-                    <div className="w-12 h-12 rounded-2xl bg-gradient-to-br from-[#007cc3] to-[#00a3e0] text-white font-bold flex items-center justify-center mb-6 shadow-lg shadow-[#007cc3]/40 group-hover:scale-110 transition-transform">
-                      <IconComp className="w-6 h-6" />
+                    <div className="w-12 h-12 rounded-2xl bg-gradient-to-br from-[#007cc3] to-[#00a3e0] text-white font-bold flex items-center justify-center mb-6 shadow-lg shadow-[#007cc3]/40 group-hover:scale-110 group-hover:rotate-6 transition-all duration-300">
+                      <IconComp className="w-6 h-6 animate-pulse" />
                     </div>
-                    <h3 className="text-xl font-extrabold text-white mb-2 group-hover:text-[#00a3e0] transition-colors">
+                    <h3 className="text-xl font-extrabold text-white mb-2 group-hover:text-cyan-300 transition-colors">
                       {pillar.title}
                     </h3>
                     <p className="text-xs text-slate-300 leading-relaxed font-normal">
                       {pillar.desc}
                     </p>
                   </div>
-                  <div className="pt-4 mt-4 border-t border-slate-800/80 flex items-center space-x-1.5 text-xs font-bold text-[#00a3e0]">
-                    <CheckCircle2 className="w-4 h-4" />
+                  <div className="pt-4 mt-6 border-t border-slate-800/80 flex items-center space-x-1.5 text-xs font-bold text-cyan-400">
+                    <CheckCircle2 className="w-4 h-4 text-cyan-400" />
                     <span>Verified Core Standard</span>
                   </div>
                 </div>
@@ -249,6 +254,9 @@ export default function Home() {
 
         </div>
       </section>
+
+      {/* Executive Leadership Section */}
+      <Leadership />
 
       {/* Suntech Organization Awards Section */}
       <Awards />

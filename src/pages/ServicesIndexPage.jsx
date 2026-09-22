@@ -13,6 +13,17 @@ import {
 } from 'lucide-react';
 
 export default function ServicesIndexPage() {
+  const [isExpanded, setIsExpanded] = React.useState(false);
+
+  const toggleReadMore = (e) => {
+    e.preventDefault();
+    setIsExpanded(!isExpanded);
+    const element = document.getElementById('services-grid');
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+
   const serviceCards = [
     {
       title: 'Digital Marketing & Brand Growth',
@@ -55,7 +66,7 @@ export default function ServicesIndexPage() {
   return (
     <div className="bg-slate-50 text-slate-900 min-h-screen">
       
-      {/* Infosys Exact Subpage Hero Banner (from User Screenshot) */}
+      {/* Infosys Subpage Hero Banner */}
       <section className="relative pt-32 pb-16 md:pt-40 md:pb-20 overflow-hidden bg-gradient-to-b from-[#18253c] via-[#e2ebf7] to-[#f8fafc]">
         
         {/* Abstract 3D Glass Light Rings Background Effect */}
@@ -73,14 +84,14 @@ export default function ServicesIndexPage() {
             <span className="text-white">Services</span>
           </div>
 
-          {/* Center Category Pill Badge (Exact "Event" Badge from Screenshot) */}
+          {/* Center Category Pill Badge */}
           <div className="flex justify-center mb-6">
             <div className="inline-flex items-center space-x-2 px-5 py-1.5 rounded-md bg-[#0c1529] text-white text-xs font-extrabold uppercase tracking-widest shadow-lg border border-white/10">
               <span>Suntech Enterprise Verticals</span>
             </div>
           </div>
 
-          {/* Main Title (Exact Large Thin Centered Title from Screenshot) */}
+          {/* Main Title */}
           <div className="text-center max-w-4xl mx-auto space-y-6">
             <h1 className="text-4xl sm:text-6xl lg:text-7xl font-light text-slate-900 tracking-tight leading-tight">
               Suntech Service Capabilities & Solutions
@@ -89,19 +100,19 @@ export default function ServicesIndexPage() {
               Explore dedicated operational verticals engineered to streamline processes, enhance market reach, and maximize profitability.
             </p>
 
-            {/* Read More / Explore Action Button (Exact "Read More ↗" Button from Screenshot) */}
+            {/* Read More / Explore Action Button */}
             <div className="pt-2 flex justify-center">
-              <a 
-                href="#services-grid"
-                className="inline-flex items-center space-x-2 px-8 py-3.5 rounded-xl bg-[#121927] hover:bg-[#007cc3] text-white font-bold text-sm shadow-2xl transition-all hover:scale-105 group"
+              <button 
+                onClick={toggleReadMore}
+                className="inline-flex items-center space-x-2 px-8 py-3.5 rounded-xl bg-[#121927] hover:bg-[#007cc3] text-white font-bold text-sm shadow-2xl transition-all hover:scale-105 group cursor-pointer"
               >
-                <span>Read More</span>
-                <ArrowUpRight className="w-4 h-4 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
-              </a>
+                <span>{isExpanded ? 'Hide Detailed Overview' : 'Read More'}</span>
+                <ArrowUpRight className={`w-4 h-4 transition-transform duration-300 ${isExpanded ? 'rotate-180' : 'group-hover:translate-x-0.5 group-hover:-translate-y-0.5'}`} />
+              </button>
             </div>
           </div>
 
-          {/* Bottom Segmented Carousel Indicator Bars (Exact 3 Bars from Screenshot) */}
+          {/* Bottom Segmented Carousel Indicator Bars */}
           <div className="mt-16 flex items-center justify-center space-x-4 max-w-md mx-auto">
             <div className="w-36 h-2 rounded-full bg-slate-300/80" />
             <div className="w-36 h-2 rounded-full bg-[#007cc3] shadow-md shadow-[#007cc3]/40" />
@@ -110,6 +121,65 @@ export default function ServicesIndexPage() {
 
         </div>
       </section>
+
+      {/* Expanded Detailed Overview Section when Read More is Clicked */}
+      {isExpanded && (
+        <section className="py-12 bg-white border-b border-slate-200 animate-in fade-in slide-in-from-top-4 duration-500">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="bg-gradient-to-br from-slate-900 via-[#0b1730] to-slate-950 rounded-3xl p-8 sm:p-12 text-white shadow-2xl space-y-8 border border-cyan-500/30">
+              
+              <div className="flex flex-col md:flex-row md:items-center justify-between gap-6 border-b border-slate-800 pb-6">
+                <div>
+                  <span className="text-xs font-black uppercase text-cyan-400 tracking-widest block mb-1">
+                    Enterprise Unified Operations Architecture
+                  </span>
+                  <h3 className="text-2xl sm:text-3xl font-extrabold text-white">
+                    Suntech Multi-Vertical Cross Connect Framework
+                  </h3>
+                </div>
+                <div className="px-4 py-2 rounded-xl bg-cyan-500/10 border border-cyan-400/30 text-xs font-extrabold text-cyan-300 shrink-0">
+                  Master Enterprise SLA Covered
+                </div>
+              </div>
+
+              <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
+                <div className="bg-slate-900/90 p-5 rounded-2xl border border-slate-800 space-y-2">
+                  <div className="text-xs font-black text-cyan-400 uppercase tracking-wider">Vertical 1</div>
+                  <h4 className="font-extrabold text-sm text-white">Digital Marketing</h4>
+                  <p className="text-[11px] text-slate-300 leading-relaxed">
+                    SEO audits, Google/Meta PPC scaling, brand acquisition, and CRO funnel testing.
+                  </p>
+                </div>
+
+                <div className="bg-slate-900/90 p-5 rounded-2xl border border-slate-800 space-y-2">
+                  <div className="text-xs font-black text-purple-400 uppercase tracking-wider">Vertical 2</div>
+                  <h4 className="font-extrabold text-sm text-white">Financial Advisory</h4>
+                  <p className="text-[11px] text-slate-300 leading-relaxed">
+                    Daily ledger bookkeeping, automated invoice billing, and corporate tax compliance.
+                  </p>
+                </div>
+
+                <div className="bg-slate-900/90 p-5 rounded-2xl border border-slate-800 space-y-2">
+                  <div className="text-xs font-black text-blue-400 uppercase tracking-wider">Vertical 3</div>
+                  <h4 className="font-extrabold text-sm text-white">Online Marketplace</h4>
+                  <p className="text-[11px] text-slate-300 leading-relaxed">
+                    Amazon FBA & Shopify storefront launch, listing A+ SEO, and inventory sync.
+                  </p>
+                </div>
+
+                <div className="bg-slate-900/90 p-5 rounded-2xl border border-slate-800 space-y-2">
+                  <div className="text-xs font-black text-sky-400 uppercase tracking-wider">Vertical 4</div>
+                  <h4 className="font-extrabold text-sm text-white">Backend Support</h4>
+                  <p className="text-[11px] text-slate-300 leading-relaxed">
+                    24/7 customer ticketing, catalog data entry, virtual assistance, and SLA dashboards.
+                  </p>
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </section>
+      )}
 
       {/* Services Cards Grid with Rich Images & Detailed Verticals */}
       <section id="services-grid" className="py-20 relative z-10 bg-slate-50 border-t border-slate-200">

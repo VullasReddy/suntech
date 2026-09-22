@@ -8,7 +8,10 @@ export default function Footer() {
   };
 
   return (
-    <footer className="py-16 relative z-10 shadow-2xl border-t-2 border-[#007cc3]/40 bg-white text-slate-900">
+    <footer 
+      className="py-16 relative z-10 shadow-2xl border-t-2 border-[#007cc3]/40 bg-white text-slate-900"
+      style={{ backgroundColor: '#ffffff', color: '#0f172a' }}
+    >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         <div className="grid grid-cols-1 md:grid-cols-12 gap-10 pb-12 border-b border-slate-200">
@@ -19,7 +22,7 @@ export default function Footer() {
               <img 
                 src="/suntech_official_logo.jpg" 
                 alt="Suntech Solutions Official Logo" 
-                className="h-14 sm:h-16 w-auto object-contain"
+                className="h-16 sm:h-20 lg:h-24 w-auto object-contain"
               />
             </Link>
             
